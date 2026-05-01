@@ -97,7 +97,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: https://online-education02.oss-cn-hangzhou.aliyuncs.com/blog_new/2026/05/01/19bff91d822ba828b5f299f8269a69cd.jpg
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
