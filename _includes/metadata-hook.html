@@ -1,0 +1,28 @@
+{% if jekyll.environment == 'production' %}
+  <!-- Baidu auto-push -->
+  <script>
+    (function() {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      bp.type = 'text/javascript';
+      bp.async = true;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+  <!-- Google Search Console verification
+    TODO: 去 https://search.google.com/search-console 添加站点并获取验证 meta tag，复制到这里
+    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
+  -->
+
+  <!-- Baidu站长验证
+    TODO: 去 https://ziyuan.baidu.com/ 添加站点并获取验证 meta tag，复制到这里
+    <meta name="baidu-site-verification" content="YOUR_VERIFICATION_CODE" />
+  -->
+{% endif %}
