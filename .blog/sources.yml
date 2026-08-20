@@ -1,0 +1,7 @@
+---
+source_root: "../../../code/work/study/pi"
+posts:
+- id: pi-architecture-streaming
+  source: pi-arch.md
+  output: _posts/2026-08-18-pi-architecture-streaming.md
+  status: published

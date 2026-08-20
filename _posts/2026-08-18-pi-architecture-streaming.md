@@ -1,8 +1,8 @@
 ---
-blog_id: blog-template
-permalink: /posts/blog-template/
+blog_id: pi-architecture-streaming
+permalink: /posts/pi-architecture-streaming/
 title: Pi 架构解析：pi-ai 与 pi-agent-core 的流式事件设计
-date: 2026-01-01 12:00:00 +0800
+date: 2026-08-18 12:00:00 +0800
 categories: [AI, Agent]
 tags: [Pi, pi-ai, pi-agent-core, 流式处理, 工具调用]
 description: 本文从 pi-ai 与 pi-agent-core 的分工出发，解析基于 partial 快照的流式事件设计以及 Agent 工具调用闭环。
