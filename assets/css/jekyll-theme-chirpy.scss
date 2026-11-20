@@ -7,6 +7,27 @@
 {%- endif -%}
 ';
 
+/* Inherit Chirpy's palette for both manual and system theme changes. */
+#waline {
+  --waline-color: var(--text-color);
+  --waline-light-grey: var(--text-muted-color);
+  --waline-dark-grey: var(--text-muted-color);
+  --waline-bg-color: var(--main-bg);
+  --waline-bg-color-light: var(--sidebar-bg);
+  --waline-bg-color-hover: var(--card-hover-bg);
+  --waline-border-color: var(--btn-border-color);
+  --waline-border: 1px solid var(--waline-border-color);
+  --waline-disable-bg-color: var(--sidebar-bg);
+  --waline-disable-color: var(--text-muted-color);
+  --waline-bq-color: var(--blockquote-border-color);
+  --waline-info-bg-color: var(--sidebar-bg);
+  --waline-info-color: var(--text-muted-color);
+  --waline-theme-color: var(--link-color);
+  --waline-active-color: var(--toc-highlight);
+  --waline-white: var(--main-bg);
+  --waline-code-bg-color: var(--highlight-bg-color);
+}
+
 /* Compact developer-workbench sidebar */
 #sidebar {
   width: 228px;

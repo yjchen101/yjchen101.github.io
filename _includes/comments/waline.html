@@ -9,7 +9,7 @@
     container.setAttribute('aria-label', '评论区');
     document.querySelector('#tail-wrapper > footer').before(container);
 
-    const waline = init({
+    init({
       el: container,
       serverURL: {{ site.comments.waline.server_url | jsonify }},
       path: {{ page.url | relative_url | jsonify }},
@@ -17,14 +17,7 @@
       login: 'disable',
       meta: ['nick', 'mail'],
       requiredMeta: ['nick'],
-      dark: Theme.visualState === Theme.DARK,
       locale: { placeholder: '欢迎留言交流，昵称必填，邮箱选填。' }
-    });
-
-    window.addEventListener('message', (event) => {
-      if (event.source === window && event.data && event.data.id === Theme.ID) {
-        waline.update({ dark: Theme.visualState === Theme.DARK });
-      }
     });
   </script>
 {% endif %}
