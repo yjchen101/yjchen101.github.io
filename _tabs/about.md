@@ -51,7 +51,7 @@ order: 4
 
 ---
 
-## 学术论文
+## 论文
 
 **[DPDA: A Dynamic Partition-Driven Data Allocation Scheme for Boosting Hybrid SSD Performance](https://ieeexplore.ieee.org/document/11732827)** \
 *IEEE Transactions on Computers*, 2026 (CCF-A)
