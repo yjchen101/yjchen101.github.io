@@ -51,9 +51,9 @@ order: 4
 
 ---
 
-## 技术能力
+## 学术论文
 
-- **Agent 应用开发**: 熟悉 RAG、Agent、Function Calling、MCP 等大模型主流开发范式，掌握基于 LangChain/LangGraph 框架的多智能体状态机编排与构建；深入理解 Agent 核心机制，熟悉 ReAct 思维链、工具调用、上下文管理及记忆系统的落地；熟练运用 Vibe-coding 提升工程迭代效能。
+- [**DPDA: A Dynamic Partition-Driven Data Allocation Scheme for Boosting Hybrid SSD Performance**](https://ieeexplore.ieee.org/document/11732827) — IEEE Transactions on Computers'26 (CCF-A)
 
 ---
 
