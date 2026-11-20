@@ -5,3 +5,7 @@ posts:
   source: pi-arch.md
   output: _posts/2026-08-18-pi-architecture-streaming.md
   status: published
+- id: sunrise-new-era
+  source: sunrise-new-era.md
+  output: _posts/2026-11-20-sunrise-new-era.md
+  status: published
