@@ -1,5 +1,4 @@
 ---
-source_root: "../../../code/work/study/pi"
 posts:
 - id: pi-architecture-streaming
   source: pi-arch.md
@@ -9,3 +8,22 @@ posts:
   source: sunrise-new-era.md
   output: _posts/2026-11-20-sunrise-new-era.md
   status: published
+- id: c-language-syntax
+  source: 01-syntax.md
+  output: _posts/2026-11-25-c-language-syntax.md
+  status: published
+- id: c-language-data-structures
+  source: 02-data-structures.md
+  output: _posts/2026-11-25-c-language-data-structures.md
+  status: published
+- id: c-language-compile-and-link
+  source: 03-compile-and-link.md
+  output: _posts/2026-11-25-c-language-compile-and-link.md
+  status: published
+- id: c-language-build-tools
+  source: 04-build-tools.md
+  output: _posts/2026-11-25-c-language-build-tools.md
+  status: published
+source_roots:
+- "../../../code/work/study/pi"
+- "../../../workspace/embedding/c/doc"

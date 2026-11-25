@@ -103,12 +103,11 @@ class BlogPublisher
   private
 
   def load_manifest
-    return { "source_root" => "../..", "posts" => [] } unless File.file?(@manifest_path)
+    return { "source_roots" => ["../.."], "posts" => [] } unless File.file?(@manifest_path)
 
     manifest = YAML.safe_load(File.read(@manifest_path), aliases: false) || {}
     raise PublishError, "#{@manifest_path} 必须是 YAML 对象" unless manifest.is_a?(Hash)
 
-    manifest["source_root"] ||= "../.."
     manifest["posts"] ||= []
     raise PublishError, "#{@manifest_path} 的 posts 必须是数组" unless manifest["posts"].is_a?(Array)
 
@@ -117,33 +116,40 @@ class BlogPublisher
     raise PublishError, "无法读取 #{@manifest_path}: #{e.message}"
   end
 
-  def source_root
-    root = File.expand_path(@manifest.fetch("source_root"), @repo_root)
-    File.realpath(root)
-  rescue Errno::ENOENT
-    root
+  # 支持多个源目录：优先读 source_roots（数组），否则沿用旧的 source_root（字符串）。
+  def source_roots
+    @source_roots ||= begin
+      configured = @manifest["source_roots"]
+      configured = [@manifest["source_root"]] if configured.nil? || Array(configured).empty?
+      roots = Array(configured).map { |root| File.expand_path(root.to_s, @repo_root) }
+      raise PublishError, "#{@manifest_path} 的 source_roots 不能为空" if roots.empty?
+
+      roots.map { |root| File.exist?(root) ? File.realpath(root) : root }
+    end
   end
 
   def resolve_source(source)
     path = Pathname.new(source.to_s)
-    resolved = if path.absolute?
-                 path.to_s
-               else
-                 File.join(source_root, path.to_s)
-               end
-    resolved = File.expand_path(resolved)
-    raise PublishError, "找不到源文件: #{resolved}" unless File.file?(resolved)
+    candidates = if path.absolute?
+                   [path.to_s]
+                 else
+                   source_roots.map { |root| File.join(root, path.to_s) }
+                 end
+    resolved = candidates.map { |candidate| File.expand_path(candidate) }.find { |candidate| File.file?(candidate) }
+    unless resolved
+      raise PublishError, "找不到源文件: #{source}（已查找: #{candidates.map { |c| File.expand_path(c) }.join(', ')}）"
+    end
 
     File.realpath(resolved)
   end
 
   def relative_source(path)
-    relative = Pathname.new(path).relative_path_from(Pathname.new(source_root)).to_s
-    if relative == ".." || relative.start_with?("../")
-      raise PublishError, "源文件必须位于 source_root 内: #{path}"
+    root = source_roots.find do |candidate|
+      path == candidate || path.start_with?("#{candidate}#{File::SEPARATOR}")
     end
+    raise PublishError, "源文件必须位于 source_roots 内: #{path}" unless root
 
-    relative
+    Pathname.new(path).relative_path_from(Pathname.new(root)).to_s
   end
 
   def read_post(path)
@@ -247,7 +253,8 @@ def print_help
       bundle exec ruby tools/publish_posts.rb sync
       bundle exec ruby tools/publish_posts.rb check
 
-    SOURCE 可以是绝对路径，也可以是相对于 .blog/sources.yml 中 source_root 的路径。
+    SOURCE 可以是绝对路径，也可以是相对于 .blog/sources.yml 中某个 source_roots 的路径。
+    source_roots 按顺序依次查找，第一个命中的目录生效。
   HELP
 end
 
