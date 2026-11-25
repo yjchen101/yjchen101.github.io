@@ -1,7 +1,7 @@
 ---
 blog_id: c-language-syntax
 permalink: /posts/c-language-syntax/
-title: C 语言语法要点
+title: C 语言语法
 date: 2026-11-25 22:00:00 +0800
 categories: [C]
 tags: [C, 语法, 指针, 关键字]

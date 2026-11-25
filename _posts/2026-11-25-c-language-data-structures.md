@@ -1,7 +1,7 @@
 ---
 blog_id: c-language-data-structures
 permalink: /posts/c-language-data-structures/
-title: C 语言数据结构要点
+title: C 语言数据结构
 date: 2026-11-25 22:00:00 +0800
 categories: [C]
 tags: [C, 数据结构, 内存对齐, 环形缓冲区]
